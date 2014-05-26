@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Jukebox</title>
+
+    <script src="js/libs/jquery-1.10.2.js"></script>
+    <script src="js/libs/handlebars-1.1.2.js"></script>
+    <script src="js/libs/ember-1.5.1.js"></script>
+     <script src="http://builds.emberjs.com/tags/v1.0.0-beta.7/ember-data.js"></script>
+    <script src="js/jukebox.js"></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+  <body>
+
+  <script type='text/x-handlebars' data-template-name='application'>
+
+    <div class='navbar'>
+    <a href='#/'>Home</a>
+    <a href='#/jukebox'>Jukebox</a>
+    </div>
+
+    <div class="container">{{outlet}}</div>
+
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+  <h1>Welcome to Ember Jukebox</h1>
+    <h3>Click <button><a href="#/jukebox">here</a></button> for the songs</h3>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="jukebox">
+    Now Playing:
+    <strong>
+    {{#if nowPlaying}}
+      {{nowPlaying.artist.name}} - {{nowPlaying.name}} ({{duration-to-time nowPlaying.duration}})
+    {{else}}
+    -
+    {{/if}}
+    </strong>
+
+    <h3>Available Songs</h3>
+    <ul>
+    {{#each}}
+      <li>{{name}} ({{duration-to-time duration}}) - {{artist.name}} <button {{action 'playSong' this}}>Play</button></li>
+    {{/each}}
+    </ul>
+  </script>
+
+</body>
+</html>
