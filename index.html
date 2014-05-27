@@ -18,8 +18,8 @@
   <script type='text/x-handlebars' data-template-name='application'>
 
     <div class='navbar'>
-    <a href='#/'>Home</a>
-    <a href='#/jukebox'>Jukebox</a>
+    {{#link-to 'index'}}Home{{/link-to}}
+    {{#link-to 'jukebox'}}Jukebox{{/link-to}}
     </div>
 
     <div class="container">{{outlet}}</div>
